@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/00d172b9d4.js" crossorigin="anonymous"></script>
+    <!--Css-->
+    <link rel="stylesheet" href="./assets/css/my_style.css">
+    <!--favicon-->
+    <link rel="icon" href="./assets/images/favicon.ico">
+    <title>Adol Chimaobi</title>
+
+</head>
+<body data-bs-spy="scroll" data-bs-target=".nav" data-bs-offset="40">
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Dosis', sans-serif;
+            font-weight: 500;
+        }
+        .header-title {
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+            color: #C69749;
+        }
+        .header-subtitle {
+            color: #C69749;
+        }
+        .header-content {
+            font-size: calc(40px + (120 - 40) * ((100vw - 300px) / (1600 - 300)));
+            opacity: .8;
+            color: #020202;
+        }
+        .header .container {
+            height: 100%;
+            position: relative;
+        }
+        .header .header-subtitle {
+            font-size: calc(20px + (45 - 20) * ((100vw - 300px) / (1600 - 300)));
+        }
+        .header-title {
+            font-size: calc(12px + (19 - 12) * ((100vw - 300px)/ (1600 - 300)));
+            font-weight: 500;
+        }
+        .social-icons {
+            padding-top: 1rem;
+            max-width: 180px;
+        }
+        li.social-item {
+            display: inline-block
+        }
+        ul {
+            list-style-type: disc;
+        }
+        .icon-lg {
+            font-size: 30px;
+        }
+        .icon-md {
+            font-size: 15px;
+        }
+        .social-item {
+            margin: 0px 10px;
+        }
+        @media (max-width: 797.98px) {
+            .header-title, .header-subtitle, .header-content{
+                letter-spacing: 2px;
+            }
+        }
+        @media (max-width: 767.98px) {
+            .header {
+                min-height: 500px;
+                height: 500px;
+            }
+            .header-title {
+                letter-spacing: 2px;
+            }
+            .social-icons {
+                margin: auto;
+            }
+        }
+        
+
+    </style>
+    <!--Header ------->
+    <header class="header" id="home">
+        <div class="container">
+            <ul class="social-icons">
+                <li class="social-item"><a href="#contact"><i class="fa-solid fa-envelope title icon-md"></i></a></li>
+                <li class="social-item"><a href="https://twitter.com/orden_wills?s=20&t=ir3CsHnQy6gNCMLeNlsZmQ"><i class="fa-brands fa-twitter title icon-md"></i></a></li>
+                <li class="social-item"><a href="https://www.linkedin.com/in/ekwe-chimaobi-327644199"><i class="fa fa-linkedin title icon-md" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a href="https://wa.me/message/6QSLFPX2K7ZZL1"><i class="fa-brands fa-whatsapp icon-md title"></i></a></li>
+            </ul>
+            <div class="intro">
+                <h4 class="header-subtitle">Hello, i am </h4>
+                <h3 class="header-content">Adol Chimaobi •E•</h3>
+                <h5 class="header-title">Data Scientist | Python Developer</h5>
+                <a class="get_resume " role="button" href="{{url_for('download')}}"><i class="fa fa-print icon-md " style="padding-right: 5px;" aria-hidden="true"></i>Print Resume</a>
+            </div>
+        </div>
+    </header>
+    <style>
+        .brand-image {
+            width: 170px;
+            height: 170px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            border: 10px solid black;
+        }
+        .brand-txt {
+            position: absolute;
+            bottom: -20px;
+            opacity: 0;
+            transition: 1s;
+            z-index: 1;
+        }
+        .img {
+            vertical-align: middle;
+        }
+        .navbar.affix .brand-txt {
+            bottom: 0;
+            opacity: 1;
+        }
+        .nav-link {
+            color: #15e43e;
+        }
+        .navbar .nav-link.active {
+            color: #E16428;
+        }
+        .nav-link:hover {
+            color: #00AD35;;
+        }
+        .navbar.affix .brand-image {
+            top: -10px;
+            opacity: 0;
+        }
+        @media (max-width:991.98px) {
+                    .navbar .brand {
+                        display: none;
+                }
+        }
+    </style>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top affix-top" data-bs-toggle="affix" style="background-color: #000000; padding: 16px 13px;">
+        <div class="container">
+          
+          <button class="navbar-toggler" style="margin-left:auto ;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars icon-lg subheadings"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav" style="margin-right:auto;" >
+                <!-- style="margin-right: 209px;" -->
+                <!-- style="color: #12e93d;" -->
+              <li class="nav-item">
+                <a class="nav-link active"  aria-current="page" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#resume">Resume</a>
+              </li>
+
+            </ul>
+            
+            <ul class="navbar-nav navbar-brand brand">
+                <img src="./assets/images/dp.jpeg" class="brand-image">
+                <li class="brand-txt">
+                    <h5 class="brand-title">Adol Chimaobi</h5>
+                    <div class="brand-subtitle">Data Scientist| Python Developer</div>
+                </li>
+            </ul>
+            <ul class="navbar-nav "  style="margin-left: auto;">
+                <!-- style="margin-left: 209px;" -->
+                <li class="nav-item">
+                  <a class="nav-link"  href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  href="#blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="#contact">Contact</a>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </nav>
+    </nav>
+    <!------------------>
+
+    <!-- My About Section-->
+    <section class="detials" style="margin:0px;background-color: #36f06e;" id="about">
+        <div class="row about-section" style="margin: 0px;">
+            <div class="col-lg-4 col-md-12 col-sm-12" style="background-color: #272123; padding: 60px; border-right:1px solid; border-color: #000000; ">
+                <div class="container">
+                    <h3 class="subheadings">
+                        who am i?
+                    </h3>
+                    <span class="line"></span>
+                    <h5 style="padding-bottom: 16px; color:#C69749">Data Scientist / Python Developer</h5>
+                    <p class="sentence">Detail oriented python programmer with 3 years of experience in Server-side development,Building automation bots,WebScraping and Data Entry, Working with apis,Data Analysis, Building production ready machine learning models,using related skills.
+                        I am fervent to merge with a team of elegant programmers for a great uplifting of the company and as well as elevating my skills level too.
+                        I am insightful , devoted, knowledgeable</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12" style="background-color: #272123; padding: 60px; border-right:1px solid; border-color: #000000;">
+                <div class="container">
+                    <h3 class="subheadings">
+                        Personal Info
+                    </h3>
+                    <span class="line"></span>
+                    <ul style="text-decoration: none; padding: 0px;">
+                        <li class="sentence"><span class="title">Email</span> : maobiekwe@gmail</li>
+                        <li class="sentence"><span class="title">Phone</span> : +2347046655760</li>
+                        <li class="sentence"><span class="title">Linkedin</span> : <a style="color:#735732" class="gh" href="https://www.linkedin.com/in/ekwe-chimaobi-327644199">ekwe chimaobi</a></li>
+                        <li class="sentence"><span class="title">Github</span> : <a class="sentence gh" href="https://github.com/OrdenWills">@orden_wills</a></li>
+                    </ul>
+                </div>
+            </div>
+            <style>
+                .ml-auto {
+                    margin-left: auto;
+                }
+                .ml-10 {
+                    margin-left: 17px;
+                }
+                .gh:hover {
+                    color: #C69749;
+                }
+            </style>
+            <div class="col-lg-4 col-md-12 col-sm-12" style="background-color: #272123; padding: 60px; border-right:1px solid; border-color: #000000;">
+                <div class="container">
+                    <h3 class="subheadings">
+                        My Expertise
+                    </h3>
+                    <span class="line"></span>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-laptop-code headings icon-lg"></i>
+                        </div>
+                        <div class="col-10 ml-10">
+                            <h6 class="title">Data Analysis</h6>
+                            <hr style="color: #000000; margin: 16px 0px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-sharp fa-solid fa-network-wired icon-lg headings"></i>
+                        </div>
+                        <div class="col-10 ml-10">
+                            <h6 class="title">Web Development</h6>
+                            <hr style="color: #000000; margin: 16px 0px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-robot headings icon-lg"></i>
+                        </div>
+                        <div class="col-10 ml-10">
+                            <h6 class="title">Machine Learning</h6>
+                            <hr style="color: #000000; margin: 16px 0px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-sharp fa-solid fa-laptop-file headings icon-lg"></i>
+                        </div>
+                        <div class="col-10 ml-10">
+                            <h6 class="title">Web Scraping</h6>
+                            <hr style="color: #000000; margin: 16px 0px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <!-- <i class="ti-facebook" style="color:#fff ; background-color:#fff"></i> -->
+                            <i class="fa-solid fa-server icon-lg headings"></i>
+                        </div>
+                        <div class="col-10 ml-10">
+                            <h6 class="title">Backend Development</h6>
+                            <hr style="color: #000000; margin: 16px 0px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------------------->
+
+
+    <!-- My Resume section -->
+    <style>
+        .gen-color {
+            background-color: #363333;
+        }
+        .hr {
+            background-color: #000000;
+            margin: 16px 0px;
+        }
+        .card-header {
+            padding: 12px 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 25px;
+        }
+        .progress {
+            width: 100%;
+            height: 3px;
+            background-color: #000000;
+            margin-bottom: 16px;
+        }
+        .line {
+            margin: 0px;
+        }
+        .prog-95 {
+            width: 95%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+        .prog-90 {
+            width: 90%;
+            height: 3px;
+            background-color: #12e93d
+        }
+        .prog-85 {
+            width: 85%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+        .prog-80 {
+            width: 80%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+        .prog-70 {
+            width: 70%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+        .prog-50 {
+            width: 50%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+        .prog-40 {
+            width: 40%;
+            height: 3px;
+            background-color: #12e93d;
+        }
+    </style>
+    <section class="section" id="resume" style="padding: 80px 0px; background-color: #272123;">
+        <div class="container">
+            <h2 class="subheadings" style="padding: 0px 0px 48px 0px;" >My <span class="headings">Resume</span></h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card gen-color">
+                        <div class="card-header" style="border: 0px;">
+                            <h4 class="subheadings">Expertise</h4>
+                            <span class="line" style="margin: 0%;"></span>
+                        </div>
+                        <div class="card-body gen-color">
+                            <h4 class="headings">2021-2022</h4>
+                            <p class="title">Data Science</p>
+                            <p class="sentence">
+                                Started Working on data analysis/data cleaning and data visiualization using python,pandas,matplotlib,seaborn,
+                                jupyter notebook,Also built machine-learning and deep learning models for computer vision(cnn),Natural Language Processing,linear regression.
+                                Using Tensorflow and Keras,sklearn,Pytorch etc
+                            </p>
+                            <hr>
+                            <h4 class="headings">2020-2021</h4>
+                            <p class="title">WebScraping and Automation</p>
+                            <p class="sentence">Built Projects using WebScraping and automation tools like selenium,bs4(beautiful-soup)</p>
+                            <hr>
+                            <h4 class="headings">2019-2021</h4>
+                            <p class="title">Web Development</p>
+                            <p class="sentence">Learnt and built webapps using Html,Css,JavaScript and Python</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card gen-color">
+                        <div class="card-header" style="border: 0px;">
+                            <h4 class="subheadings">Education</h4>
+                            <span class="line" style="margin: 0%;"></span>
+                        </div>
+                        <div class="card-body gen-color">
+                            <h4 class="headings">2019-2020</h4>
+                            <p class="title">IJMB</p>
+                            <p class="sentence">Interim Joint Matriculation Board, Ahmadu Bello University Zaria Nigeria - A-level (ADVANCED LEVEL CERTIFICATE)</p>
+                            <hr>
+                            <h4 class="headings">2012-2017</h4>
+                            <p class="title">BCS</p>
+                            <p class="sentence">Bishop Crowther Seminary,Nigeria - WAEC(WEST AFRICAN EXAMINATION CERTIFICATE)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card gen-color">
+                        <div class="card-header">
+                            <h4 class="subheadings">Skills</h4>
+                            <span class="line"></span>
+                        </div>
+                        <div class="card-body gen-color">
+                            <h5 class="headings">Html & Css</h5>
+                            <div class="progress"><span class="prog-90"></span></div>
+                            <h5 class="headings">English</h5>
+                            <div class="progress"><span class="prog-95"></span></div>
+                            <h5 class="headings">Python</h5>
+                            <div class="progress"><span class="prog-95"></span></div>
+                            <h5 class="headings">SQL</h5>
+                            <div class="progress"><span class="prog-70"></span></div>
+                            <h5 class="headings">JavaScript</h5>
+                            <div class="progress"><span class="prog-85"></span></div>
+                            <!-- <h5 class="headings">C++</h5>
+                            <div class="progress"><span class="prog-50"></span></div> -->
+                            <h5 class="headings">Git & Github</h5>
+                            <div class="progress"><span class="prog-80"></span></div>
+                        </div>        
+                    </div>
+                    <div class="card gen-color">
+                        <div class="card-header">
+                            <h4 class="subheadings">Languages</h4>
+                            <span class="line"></span>
+                        </div>
+                        <div class="card-body gen-color">
+                            <h5 class="headings">English</h5>
+                            <div class="progress"><span class="prog-95"></span></div>
+                            <h5 class="headings">Igbo</h5>
+                            <div class="progress"><span class="prog-95"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-------------------------------->
+
+    <!--Hire-->
+    <style>
+        .hire-button {
+            border-radius: 45px;
+            text-align: center;
+            padding: 10px 35px;
+            background-color: #15e43e;
+            text-decoration: none;
+            color: #000;
+            /* width: 10px; */
+        }
+    </style>
+    <section class="container-fluid" style="background-color: #000000; text-align: center; padding: 40px 0px;">
+        <div class="hire-me">
+            <h2 class="headings" style="padding: bottom 10px;">Am Available For Freelance</h2>
+            <a class="hire-button" type="button" href="#contact">Hire Me</a>
+        </div>
+    </section>
+    <!--------->
+    <!---Portfolio-->
+    <section class="section" id="projects" style="padding: 80px 0px; background-color: #272123;">
+        <div class="container">
+            <h2 class="subheadings" style="padding-bottom: 48px;">My <span class="headings">Projects</span></h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <img class="proj" src="./assets/images/resume_desk.png" style="position:relative">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------->
+    <style>
+        .blog-row {
+            /* border: 1px solid;
+            border-color: #000; */
+            margin-bottom: 15px;
+            background-color: #363333;
+        }
+    </style>
+    <section id="blog" style="padding: 80px 0px; background-color:#272123; border-top: 1px solid; border-color: #000;">
+        <div class="container">
+            <h3 style="margin-bottom: 45px;" class="subheadings"> My <span class="headings">Blog</span></h3>
+            <div class="row blog-row">
+                <div class="col-lg-3 subheadings">
+                    <h1>Coming</h1>
+                </div>
+                <div class="col-lg-9 title">
+                    <h2>Soon</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .form-group {
+            margin-bottom: 17px;
+        
+        }
+        .form-control {
+            background-color: #424040;
+        }
+        .pop {
+            padding-top: 5px;
+        }
+    </style>
+
+    <section style="padding: 80px 0px; background-color:#000">
+        <div class="container" id="contact">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12" style="background-color:#272123">
+                    <div class="contact-form" style="padding: 30px;">
+                        <h3 class="subheadings">Send me a message</h3>
+                        <span class="line" style="margin-bottom: 30px;"></span>
+                        <ul style="background-color:#363333;" class="flashes">
+                        </ul>
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Name*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email*" name="email" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="8" name="message" placeholder="message *"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control" style="background-color: #12e93d;">Send message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12" style="background-color: #272123; margin-left: auto; border: 1px solid; border-color: #000; padding: 30px;">
+                    <div class="contact-card">
+                        <div class="card" style="background-color: #272123; border:0">
+                            <h3 class="subheadings">Get in touch</h3>
+                            <span class="line" style="margin-bottom: 30px;"></span>
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fa-solid fa-envelope headings icon-lg"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h5 class="title" style="margin-left: 3px;">Email : </h5>
+                                    <P class="sentence">maobiekwe@gmail.com</P>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fa fa-linkedin headings icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h5 style="margin-left: 3px;" class="title">Linkedin : </h5>
+                                    <p class="sentence">Ekwe Chimaobi Adolphus</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fa-brands fa-twitter headings icon-lg"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h5 class="title" style="margin-left: 3px;">Twitter : </h5>
+                                    <p class="sentence">@Ordenwills</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fa-brands fa-whatsapp icon-lg headings"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h5 class="title" style="margin-left: 3px;">Whatsapp : </h5>
+                                    <p class="sentence">@Whatsapp</p>
+                                </div>
+                            </div>
+                            <ul class="social-icons">
+                                <li class="social-item"><a href="#contact"><i class="fa-solid fa-envelope sentence icon-md"></i></a></li>
+                                <li class="social-item"><a href="https://twitter.com/orden_wills?s=20&t=ir3CsHnQy6gNCMLeNlsZmQ"><i class="fa-brands fa-twitter sentence icon-md"></i></a></li>
+                                <li class="social-item"><a href="https://www.linkedin.com/in/ekwe-chimaobi-327644199"><i class="fa fa-linkedin sentence icon-md" aria-hidden="true"></i></a></li>
+                                <li class="social-item"><a href="https://wa.me/message/6QSLFPX2K7ZZL1"><i class="fa-brands fa-whatsapp icon-md sentence"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" style="background-color: #363333; text-align: center;">
+        <div class="container">
+            <p class="headings">
+                ©  2022</p>
+        </div>
+    </footer>
+    
+</body>
+</html><nav>
+            
+</nav>
